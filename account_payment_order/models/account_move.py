@@ -48,7 +48,7 @@ class AccountMove(models.Model):
             if (self.reference_type or "none") != "none":
                 communication = self.ref
             elif self.is_purchase_document():
-                communication = self.ref or self.payment_reference
+                communication = self.payment_reference or self.ref or ""
             else:
                 communication = self.payment_reference or self.name
         # If we have credit note(s) - reversal_move_id is a one2many
